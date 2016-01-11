@@ -31,11 +31,11 @@ public class BalieTest {
          * kan worden verkregen
          */
 
-        assertNull(balie.openRekening("", "tilburg", "knaap"));
-        assertNull(balie.openRekening("ferhat", "", "knaap"));
-        assertNull(balie.openRekening("ferhat", "tilburg", "kna"));
-        assertNull(balie.openRekening("ferhat", "tilburg", "knaaaaaappp"));
-        String login = balie.openRekening("ferhat", "tilburg", "knaap");
+        assertNull(balie.openRekening("", "Tilburg", "knaap"));
+        assertNull(balie.openRekening("Rico", "", "knaap"));
+        assertNull(balie.openRekening("Rico", "Tilburg", "kna"));
+        assertNull(balie.openRekening("Rico", "Tilburg", "knaaaaaappp"));
+        String login = balie.openRekening("Rico", "Tilburg", "knaap");
         assertNotNull(login);
         assertEquals(8, login.length());
     }
@@ -56,7 +56,7 @@ public class BalieTest {
         assertNull(balie.logIn(null, "001"));
         assertNull(balie.logIn("ferhat", null));
 
-        String code = balie.openRekening("ferhat", "tilburg", "knaap");
+        String code = balie.openRekening("Rico", "Tilburg", "knaap");
         IBankiersessie sessie = balie.logIn(code, "knaap");
         assertNotNull(sessie);
         assertTrue(sessie.isGeldig());

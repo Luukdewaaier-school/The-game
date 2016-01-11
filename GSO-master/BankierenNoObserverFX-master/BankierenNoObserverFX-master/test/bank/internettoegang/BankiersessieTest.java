@@ -7,12 +7,12 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by Ferhat on 11-1-2016.
+ * Created by NesciO on 11-1-2016.
  */
 public class BankiersessieTest {
 
-    public static final String Ferhat = "ferhat";
-    public static final String tilburg = "tilburg";
+    public static final String Rico = "Rico";
+    public static final String tilburg = "Tilburg";
     public static final String test = "test";
 
     IBalie balie;
@@ -24,7 +24,7 @@ public class BankiersessieTest {
     public void setUp() throws Exception {
         bank = new Bank("TestBank");
         balie = new Balie(bank);
-        rekening = balie.openRekening(Ferhat, tilburg, test);
+        rekening = balie.openRekening(Rico, tilburg, test);
 
         bankiersessie = balie.logIn(rekening, test);
     }
@@ -36,8 +36,8 @@ public class BankiersessieTest {
 
     @Test
     public void testMaakOver() throws Exception {
-        String luuk = "luuk";
-        String newRekening = balie.openRekening(luuk, tilburg, test);
+        String chris = "chris";
+        String newRekening = balie.openRekening(chris, tilburg, test);
         IBankiersessie newSession = balie.logIn(newRekening, test);
 
         assertTrue(bankiersessie.maakOver(newSession.getRekening().getNr(), new Money(1, Money.EURO)));

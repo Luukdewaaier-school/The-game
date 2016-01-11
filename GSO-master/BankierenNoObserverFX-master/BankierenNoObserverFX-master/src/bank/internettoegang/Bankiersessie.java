@@ -3,13 +3,15 @@ package bank.internettoegang;
 import bank.bankieren.IBank;
 import bank.bankieren.IRekening;
 import bank.bankieren.Money;
+import fontys.observer.RemotePropertyListener;
+import fontys.observer.RemotePublisher;
 import fontys.util.InvalidSessionException;
 import fontys.util.NumberDoesntExistException;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class Bankiersessie extends UnicastRemoteObject implements
+public class Bankiersessie extends UnicastRemoteObject implements RemotePublisher,
         IBankiersessie {
 
     private static final long serialVersionUID = 1L;
@@ -66,4 +68,13 @@ public class Bankiersessie extends UnicastRemoteObject implements
         UnicastRemoteObject.unexportObject(this, true);
     }
 
+    @Override
+    public void addListener(RemotePropertyListener remotePropertyListener, String s) throws RemoteException {
+
+    }
+
+    @Override
+    public void removeListener(RemotePropertyListener remotePropertyListener, String s) throws RemoteException {
+
+    }
 }

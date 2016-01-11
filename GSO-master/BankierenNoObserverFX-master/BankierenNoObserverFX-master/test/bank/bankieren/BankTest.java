@@ -31,9 +31,9 @@ public class BankTest {
          */
 
         assertEquals(-1, bank.openRekening("", "tilburg"));
-        assertEquals(-1, bank.openRekening("ferhat", ""));
+        assertEquals(-1, bank.openRekening("Rico", ""));
 
-        assertNotEquals(-1, bank.openRekening("ferhat", "tilburg"));
+        assertNotEquals(-1, bank.openRekening("Rico", "Tilburg"));
     }
 
     @Test
@@ -43,11 +43,11 @@ public class BankTest {
          * @return de bankrekening met nummer nr mits bij deze bank bekend, anders null
          */
 
-        int i = bank.openRekening("luuk", "tilburg");
+        int i = bank.openRekening("Rico", "Tilburg");
         IRekening rekening = bank.getRekening(i);
         assertNotNull(rekening);
 
-        // other (invalid) renkening nr should return null
+        // other (invalid) rekening nr should return null
         for (int j = 1; j < 10000; j++) assertNull(bank.getRekening(i + j));
     }
 
@@ -82,7 +82,7 @@ public class BankTest {
 
 
         // @throws NumberDoesntExistException als een van de twee bankrekeningnummers onbekend is
-        int rekening1 = bank.openRekening("luuk", "tilburg");
+        int rekening1 = bank.openRekening("Rico", "Tilburg");
         Money money = new Money(100, Money.EURO);
         try {
             bank.maakOver(rekening1, 1337, money);
@@ -96,7 +96,7 @@ public class BankTest {
         } catch (NumberDoesntExistException ignored) {
         }
 
-        int rekening2 = bank.openRekening("ferhat", "tilburg");
+        int rekening2 = bank.openRekening("Rico", "Tilburg");
 
         // @return <b>true</b> als de overmaking is gelukt, anders <b>false</b>
         int kred_limit = bank.getRekening(rekening1).getKredietLimietInCenten();

@@ -36,7 +36,7 @@ class Rekening extends BasicPublisher implements IRekeningTbvBank, RemotePublish
      * @param currency de munteenheid waarin het saldo is uitgedrukt
      * @see banking.persistence.PersistentBank
      */
-    Rekening(int number, IKlant klant, Money saldoyugvjb) {
+    Rekening(int number, IKlant klant, Money saldo) {
         this.nr = number;
         this.eigenaar = klant;
         this.saldo = saldo;

@@ -22,8 +22,7 @@ public class Bank implements IBank {
     }
 
     public int openRekening(String name, String city) {
-        if (name.equals("") || city.equals(""))
-            return -1;
+        if (name.equals("") || city.equals("")) return -1;
 
         IKlant klant = getKlant(name, city);
         synchronized (accounts) {
@@ -36,8 +35,7 @@ public class Bank implements IBank {
 
     private IKlant getKlant(String name, String city) {
         for (IKlant k : clients) {
-            if (k.getNaam().equals(name) && k.getPlaats().equals(city))
-                return k;
+            if (k.getNaam().equals(name) && k.getPlaats().equals(city))  return k;
         }
         IKlant klant = new Klant(name, city);
         clients.add(klant);
@@ -58,13 +56,11 @@ public class Bank implements IBank {
 
         IRekeningTbvBank source_account = (IRekeningTbvBank) getRekening(source);
         if (source_account == null)
-            throw new NumberDoesntExistException("account " + source
-                    + " unknown at " + name);
+            throw new NumberDoesntExistException("account " + source + " unknown at " + name);
 
         IRekeningTbvBank dest_account = (IRekeningTbvBank) getRekening(destination);
         if (dest_account == null)
-            throw new NumberDoesntExistException("account " + destination
-                    + " unknown at " + name);
+            throw new NumberDoesntExistException("account " + destination + " unknown at " + name);
 
         synchronized (accounts) {
             Money negative = Money.difference(new Money(0, money.getCurrency()), money);
